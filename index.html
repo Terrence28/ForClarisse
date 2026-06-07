@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>For My Love ✨</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="card">
+    <div class="floating-hearts" id="heartsContainer"></div>
+
+    <h1>✨ For My Beautiful Girlfriend ✨</h1>
+    <div class="sub">Every day, you amaze me more</div>
+
+    <div class="compliment-box">
+        <div class="compliment-text" id="complimentDisplay">Your smile instantly brightens my whole world 🌞</div>
+        <button id="newComplimentBtn">🌸 New compliment 🌸</button>
+    </div>
+
+    <div class="reasons">
+        <h3>💖 Why I'm crazy about you 💖</h3>
+        <div class="reason-list" id="reasonList"></div>
+    </div>
+
+    <!-- NEW: Video Button and Player -->
+    <div class="video-section">
+        <button id="videoBtn" class="video-btn">🎥 Play me 🎥</button>
+        <div id="videoContainer" class="video-container hidden">
+            <video id="loveVideo" controls autoplay>
+                <source src="love-video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <p class="video-note">✨ A little moment just for us ✨ <br> <br> 💌 Hey my love,<br><br>
+            This moment is the part of which we are starting from 
+            your little chorale member pet peeave, to friends, to bestfriends, 
+            to lovers, to soulmates. <br><br>
+            You are the best part of every single day. 
+            Your laugh is my favorite song, your kindness inspires me, 
+            and being with you feels like home. 
+            I made this little website just to remind you how truly special you are. 
+            I love you more than any words could say! 💕<br><br>
+            — Forever yours my bubba🤍
+            </p>
+            <!-- Optional: upload a different video -->
+            <input type="file" id="videoUpload" accept="video/*" style="margin-top: 10px;">
+            <small style="display: block;">💡 Or upload your own video</small>
+        </div>
+    </div>
+
+    <div class="surprise" id="surpriseTrigger">
+        <p>📬 Click here for a secret love note 📬</p>
+        <div class="hidden-message" id="secretMessage">
+            <p>💌 Hey my langga,<br><br>
+            You are the best part of every single day.
+            Your laugh is my favorite song (even you sound like a tractor), 
+            your kindness (gapanaputi) inspires me, 
+            and being with you feels like home. 
+            I made this little website just to remind you how truly special you are. 
+            I love you more than any words could say! 💕<br><br>
+            — Forever yours 🤍
+            </p>
+        </div>
+    </div>
+    <footer>made with 💻 + ❤️ just for you</footer>
+    <footer>My Bubba</footer>
+</div>
+
+<script>
+    // ------------------ CUSTOMIZE HERE ------------------
+    const compliments = [
+        "Your smile instantly brightens my whole world 🌞",
+        "You have the kindest heart I've ever known 💖",
+        "You're more stunning every single day 🌹",
+        "I fall for you a little more every morning ☀️",
+        "Your laugh is pure magic ✨",
+        "You make me a better person just by being you 🦋",
+        "Everything is better with you by my side 🌈",
+        "Your intelligence and wit drive me wild 🔥",
+        "Cuddling with you is my favorite place to be 🥰",
+        "You are my sunshine on the rainiest days ☔",
+        "The way you care about others is incredibly beautiful 🌺",
+        "Being loved by you is the greatest gift 🎁",
+        "You're literally the cutest human alive 🐻💕",
+        "Your voice could calm any storm 🌊",
+        "You're my dream come true — no joke 💘"
+    ];
+
+    const reasonsList = [
+        "Her eyes sparkle like stars ✨",
+        "Her hugs heal everything (magical nurse kase sya)🤗",
+        "She's brilliant & funny 🧠",
+        "She makes me want to be my best",
+        "Her kindness touches everyone",
+        "She’s my favorite adventure 🗺️",
+        "Her cooking = ????? ",
+        "She remembers the little things",
+        "She’s stunning without trying",
+        "She supports my dreams 🚀"
+    ];
+    // ----------------------------------------------------
+
+    const complimentDisplay = document.getElementById('complimentDisplay');
+    const newBtn = document.getElementById('newComplimentBtn');
+    const reasonContainer = document.getElementById('reasonList');
+
+    function getRandomCompliment() {
+        return compliments[Math.floor(Math.random() * compliments.length)];
+    }
+
+    function updateCompliment() {
+        complimentDisplay.style.opacity = '0';
+        setTimeout(() => {
+            complimentDisplay.textContent = getRandomCompliment();
+            complimentDisplay.style.opacity = '1';
+        }, 150);
+    }
+
+    newBtn.addEventListener('click', updateCompliment);
+    complimentDisplay.textContent = getRandomCompliment();
+
+    function buildReasonBadges() {
+        reasonContainer.innerHTML = '';
+        reasonsList.forEach(reason => {
+            const badge = document.createElement('div');
+            badge.className = 'reason-badge';
+            badge.textContent = reason;
+            reasonContainer.appendChild(badge);
+        });
+    }
+    buildReasonBadges();
+
+    const surpriseDiv = document.getElementById('surpriseTrigger');
+    const secretMsgDiv = document.getElementById('secretMessage');
+    surpriseDiv.addEventListener('click', () => {
+        secretMsgDiv.classList.toggle('show');
+        surpriseDiv.querySelector('p').innerHTML = secretMsgDiv.classList.contains('show') 
+            ? '💌 Aww, you opened it! I love you 💌' 
+            : '📬 Click here for a secret love note 📬';
+    });
+
+    // ---------- VIDEO BUTTON LOGIC ----------
+    const videoBtn = document.getElementById('videoBtn');
+    const videoContainer = document.getElementById('videoContainer');
+    const loveVideo = document.getElementById('loveVideo');
+    const videoUpload = document.getElementById('videoUpload');
+
+    videoBtn.addEventListener('click', () => {
+        if (videoContainer.classList.contains('hidden')) {
+            videoContainer.classList.remove('hidden');
+            // If video is not loaded yet (maybe file missing), try to reload
+            if (!loveVideo.src || loveVideo.src === window.location.href + '#') {
+                loveVideo.src = "love-video.mp4";
+                loveVideo.load();
+            }
+            loveVideo.play().catch(e => console.log("Autoplay blocked, click play manually"));
+        }
+    });
+
+    // Allow user to upload their own video
+    if (videoUpload) {
+        videoUpload.addEventListener('change', (event) => {
+            const file = event.target.files[0];
+            if (file) {
+                const videoURL = URL.createObjectURL(file);
+                loveVideo.src = videoURL;
+                loveVideo.load();
+                loveVideo.play().catch(e => console.log("Playback needs gesture"));
+                if (videoContainer.classList.contains('hidden')) {
+                    videoContainer.classList.remove('hidden');
+                }
+            }
+        });
+    }
+
+    // Add close button to video container
+    const closeBtn = document.createElement('span');
+    closeBtn.innerHTML = '✖';
+    closeBtn.className = 'close-video';
+    closeBtn.title = 'Close video';
+    closeBtn.addEventListener('click', () => {
+        videoContainer.classList.add('hidden');
+        loveVideo.pause();
+    });
+    videoContainer.insertBefore(closeBtn, videoContainer.firstChild);
+
+    // Floating hearts
+    function createHeart() {
+        const heartContainer = document.getElementById('heartsContainer');
+        const heart = document.createElement('div');
+        heart.classList.add('heart');
+        heart.innerHTML = ['❤️', '💖', '🌸', '💕', '💗', '✨', '💓'][Math.floor(Math.random() * 7)];
+        heart.style.left = Math.random() * 100 + '%';
+        heart.style.animationDuration = 3 + Math.random() * 3 + 's';
+        heart.style.fontSize = 1.2 + Math.random() * 1.5 + 'rem';
+        heartContainer.appendChild(heart);
+        setTimeout(() => heart.remove(), 4000);
+    }
+    setInterval(createHeart, 1800);
+    complimentDisplay.style.opacity = '1';
+</script>
+</body>
+</html>
