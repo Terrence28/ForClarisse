@@ -1,3 +1,4 @@
+/* style.css */
 * {
     margin: 0;
     padding: 0;
@@ -14,6 +15,7 @@ body {
     padding: 20px;
 }
 
+/* ---------- CARD ---------- */
 .card {
     max-width: 600px;
     width: 100%;
@@ -31,6 +33,7 @@ body {
     transform: scale(1.01);
 }
 
+/* ---------- FLOATING HEARTS ---------- */
 .floating-hearts {
     position: relative;
     height: 60px;
@@ -45,12 +48,23 @@ body {
 }
 
 @keyframes floatHeart {
-    0% { transform: translateY(0) rotate(0deg); opacity: 0; }
-    20% { opacity: 0.8; }
-    80% { opacity: 0.8; }
-    100% { transform: translateY(-70px) rotate(15deg); opacity: 0; }
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+    20% {
+        opacity: 0.8;
+    }
+    80% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(-70px) rotate(15deg);
+        opacity: 0;
+    }
 }
 
+/* ---------- TYPOGRAPHY ---------- */
 h1 {
     font-size: 2.6rem;
     background: linear-gradient(135deg, #c71f6e, #ff4d8c);
@@ -73,6 +87,7 @@ h1 {
     font-weight: 500;
 }
 
+/* ---------- COMPLIMENT BOX ---------- */
 .compliment-box {
     background: #fff2f7;
     border-radius: 50px;
@@ -93,8 +108,10 @@ h1 {
     justify-content: center;
     padding: 5px;
     transition: opacity 0.2s;
+    word-break: break-word;
 }
 
+/* ---------- BUTTONS ---------- */
 button {
     background: #ff88aa;
     border: none;
@@ -105,7 +122,7 @@ button {
     border-radius: 50px;
     cursor: pointer;
     transition: all 0.2s;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     display: inline-flex;
     align-items: center;
     gap: 12px;
@@ -114,9 +131,10 @@ button {
 button:hover {
     background: #ff4d8c;
     transform: scale(1.02);
-    box-shadow: 0 8px 18px rgba(199,31,110,0.3);
+    box-shadow: 0 8px 18px rgba(199, 31, 110, 0.3);
 }
 
+/* ---------- REASONS ---------- */
 .reasons {
     margin: 30px 0 20px;
     text-align: left;
@@ -146,10 +164,11 @@ button:hover {
     font-size: 1rem;
     font-weight: 500;
     color: #b3426b;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
     backdrop-filter: blur(2px);
 }
 
+/* ---------- SURPRISE ---------- */
 .surprise {
     margin-top: 25px;
     background: #ffe1eb;
@@ -186,7 +205,7 @@ button:hover {
     color: #c94f7c;
 }
 
-/* NEW VIDEO SECTION STYLES */
+/* ---------- VIDEO ---------- */
 .video-section {
     margin: 20px 0;
 }
@@ -223,7 +242,7 @@ button:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     transition: 0.2s;
 }
 
@@ -237,7 +256,7 @@ button:hover {
     width: 100%;
     max-height: 300px;
     border-radius: 30px;
-    box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
     margin-bottom: 12px;
 }
 
@@ -247,24 +266,201 @@ button:hover {
     margin: 8px 0;
 }
 
-.upload-label {
-    display: inline-block;
-    background: #ffd9e6;
-    padding: 8px 16px;
-    border-radius: 50px;
+input[type="file"] {
+    margin-top: 10px;
     font-size: 0.85rem;
-    font-weight: 500;
     color: #a13058;
-    cursor: pointer;
-    margin-top: 8px;
 }
 
-.upload-label input {
-    display: none;
-}
-
+/* ---------- FOOTER ---------- */
 footer {
     margin-top: 30px;
     font-size: 0.8rem;
     color: #ee99b0;
+}
+
+/* ============================================================
+       RESPONSIVE — PHONES (max-width: 600px)
+       ============================================================ */
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+
+    .card {
+        padding: 20px 14px 30px;
+        border-radius: 40px 40px 60px 60px;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+        margin: 10px 0 5px;
+    }
+
+    .sub {
+        font-size: 0.9rem;
+        padding: 4px 16px;
+        margin-bottom: 18px;
+    }
+
+    .compliment-box {
+        padding: 18px 12px;
+        margin: 14px 0;
+    }
+
+    .compliment-text {
+        font-size: 1.2rem;
+        min-height: 80px;
+        padding: 4px;
+    }
+
+    button {
+        font-size: 1rem;
+        padding: 10px 18px;
+        gap: 8px;
+    }
+
+    #newComplimentBtn {
+        font-size: 0.95rem;
+        padding: 10px 16px;
+    }
+
+    .reasons h3 {
+        font-size: 1.2rem;
+        gap: 6px;
+    }
+
+    .reason-badge {
+        font-size: 0.85rem;
+        padding: 6px 14px;
+    }
+
+    .reason-list {
+        gap: 8px;
+    }
+
+    .surprise {
+        padding: 12px;
+        margin-top: 18px;
+    }
+
+    .surprise p {
+        font-size: 0.9rem;
+    }
+
+    .hidden-message p {
+        font-size: 1rem;
+    }
+
+    .hidden-message.show {
+        max-height: 240px;
+        padding: 12px;
+    }
+
+    .video-container {
+        padding: 14px;
+        border-radius: 30px;
+    }
+
+    #loveVideo {
+        max-height: 200px;
+        border-radius: 20px;
+    }
+
+    .video-note {
+        font-size: 0.8rem;
+    }
+
+    .close-video {
+        top: 6px;
+        right: 14px;
+        width: 28px;
+        height: 28px;
+        font-size: 1.4rem;
+    }
+
+    input[type="file"] {
+        font-size: 0.75rem;
+    }
+
+    .floating-hearts {
+        height: 40px;
+    }
+
+    .heart {
+        font-size: 1.2rem;
+    }
+
+    @keyframes floatHeart {
+        0% {
+            transform: translateY(0) rotate(0deg);
+            opacity: 0;
+        }
+        20% {
+            opacity: 0.8;
+        }
+        80% {
+            opacity: 0.8;
+        }
+        100% {
+            transform: translateY(-50px) rotate(15deg);
+            opacity: 0;
+        }
+    }
+
+    footer {
+        font-size: 0.7rem;
+        margin-top: 20px;
+    }
+}
+
+/* ============================================================
+       EXTRA SMALL (max-width: 400px)
+       ============================================================ */
+@media (max-width: 400px) {
+    .card {
+        padding: 14px 10px 24px;
+        border-radius: 30px 30px 50px 50px;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .compliment-text {
+        font-size: 1rem;
+        min-height: 60px;
+    }
+
+    .reason-badge {
+        font-size: 0.75rem;
+        padding: 4px 10px;
+    }
+
+    button {
+        font-size: 0.85rem;
+        padding: 8px 14px;
+    }
+
+    #newComplimentBtn {
+        font-size: 0.85rem;
+        padding: 8px 12px;
+    }
+
+    .sub {
+        font-size: 0.8rem;
+        padding: 3px 12px;
+    }
+
+    .reasons h3 {
+        font-size: 1rem;
+    }
+
+    .video-container {
+        padding: 10px;
+    }
+
+    #loveVideo {
+        max-height: 150px;
+    }
 }
